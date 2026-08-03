@@ -1,9 +1,9 @@
 import database from '../config/db.js'
-import Tasks from '../models/Tasks.js'
+import Task from '../models/Task.js'
 
 export const listarTarefas = async (req, res) => {
     try {
-        const tarefas = await Tasks.findAll()
+        const tarefas = await Task.findAll()
 
         if (tarefas.length === 0) {
             res.status(404).json({ message: 'Nenhuma tarefa encontrada'})
@@ -20,7 +20,7 @@ export const criarTarefa = async (req, res) => {
     try {
         const { description } = req.body
 
-        const novaTarefa = await Tasks.create({ description })
+        const novaTarefa = await Task.create({ description })
 
         res.status(201).json({ message: 'Tarefa criada com sucesso' })
     } catch (error) {
@@ -34,7 +34,7 @@ export const atualizarTarefa = async (req, res) => {
         const { id } = req.params
         const { description } = req.body
 
-        const atualizandoTarefa = await Tasks.findByPk(id)
+        const atualizandoTarefa = await Task.findByPk(id)
 
         if (!atualizandoTarefa) {
             return res.status(404).json({ error: 'Tarefa não encontrada' })
@@ -54,7 +54,7 @@ export const deletarTarefa = async (req, res) => {
     try {
         const { id } = req.params
 
-        const deletandoTarefa = await Tasks.findByPk(id)
+        const deletandoTarefa = await Task.findByPk(id)
 
         if (!deletandoTarefa) {
             return res.status(404).json({ error: 'Tarefa não encontrada' })
