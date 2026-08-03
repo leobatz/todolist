@@ -5,16 +5,16 @@ import './App.css'
 function App() {
   const [tasks, setTask] = useState([])
 
-  async function getTasks() {
-    try {
-      const response = await api.get('/tarefas')
-      setTask(response.data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   useEffect(() => {
+    async function getTasks() {
+      try {
+        const response = await api.get('/tarefas')
+        setTask(response.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
     getTasks()
   }, [])
 
