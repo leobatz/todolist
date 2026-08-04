@@ -5,6 +5,7 @@ import './App.css'
 
 function App() {
   const [tasks, setTask] = useState([])
+  const [description, setDescription] = useState("")
 
   useEffect(() => {
     async function getTasks() {
@@ -19,18 +20,34 @@ function App() {
     getTasks()
   }, [])
 
+  async function createTask() {
+    try {
+      const response = await api.post('/tarefas', {
+        description //Posso usar apenas dessa forma pois o nome da variável é o mesmo que o da propriedade em json
+      })
+
+      setDescription(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='flex items-center justify-center bg-amber-100 h-screen'>
       <div className='w-xl h-screen flex flex-col gap-[20px]'>
         <div className='flex flex-col items-center box-border w-full gap-[20px] mt-[20px]'> 
           <h1 className='font-normal text-[50px] font-bitcount'>Lista de Tarefas</h1>
           <div className='flex gap-[10px] w-full'>
-            <input className='border rounded-sm w-full outline-none pl-[10px]' type="text" placeholder='Fazer compras no mercado...' />
-            <button className='bg-blue-400 text-white font-[poppins] p-[6px] rounded-sm cursor-pointer'>Adicionar</button>
+            <input 
+              className='border rounded-sm w-full outline-none pl-[10px]' type="text" placeholder='Fazer compras no mercado...'
+              onChange={(e) => {e.target.value}}
+              value={description}
+            />
+            <button onClick={createTask} className='bg-blue-400 text-white font-[poppins] p-[6px] rounded-sm cursor-pointer'>Adicionar</button>
           </div> 
         </div>
         {tasks.map(task => (
-          <div className='bg-transparent hover:bg-[#ccbd8f] flex justify-between items-center box-border w-full border rounded-sm h-[4rem] p-[15px]' key={task.id}>
+          <div className='bg-transparent hover:bg-[#ccbd8f] transition-colors flex justify-between items-center box-border w-full border rounded-sm h-[4rem] p-[15px]' key={task.id}>
             <h2>{task.description}</h2>
             <div className='flex gap-[10px]'>
               <a href="#">
