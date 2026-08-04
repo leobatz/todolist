@@ -4,13 +4,13 @@ import { SquarePen, Trash2 } from 'lucide-react';
 import './App.css'
 
 function App() {
-  const [tasks, setTask] = useState([])
+  const [tasks, setTasks] = useState([])
   const [description, setDescription] = useState("")
 
   async function getTasks() {
       try {
         const response = await api.get('/tarefas')
-        setTask(response.data)
+        setTasks(response.data)
       } catch (error) {
         console.error(error)
       }
@@ -22,15 +22,17 @@ function App() {
 
   async function createTask(event) {
     try {
-      event.preventDefault()
+      event.preventDefault() //Como estou usando um forms ele previne de recarregar a página
 
-      setDescription(description.trim())
+      const text = description.trim()
 
       const response = await api.post('/tarefas', {
-        description //Posso usar apenas dessa forma pois o nome da variável é o mesmo que o da propriedade em json
+        description: text //Posso usar apenas dessa forma pois o nome da variável é o mesmo que o da propriedade em json
       })
 
+      setDescription("")
       getTasks()
+
     } catch (error) {
       console.log(error)
     }
@@ -44,6 +46,16 @@ function App() {
       console.log(error)
     }
   }
+
+  async function editTask(id) {
+    try {
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  
 
   return (
     <div className='flex items-center justify-center bg-amber-100 h-screen'>
@@ -65,7 +77,7 @@ function App() {
             <div className='bg-transparent cursor-pointer mb-[3px] hover:bg-[#ccbd8f] transition-colors flex justify-between items-center box-border w-full border rounded-sm h-[4rem] p-[15px]' key={task.id}>
               <h2>{task.description}</h2>
               <div className='flex gap-[10px]'>
-                  <SquarePen  className='hover:text-blue-400 transition-colors'/>
+                  <SquarePen  className='hover:text-blue-400 transition-colors' onClick={() => {editTask(task.id)}}/>
                   <Trash2 className='hover:text-red-500' onClick={() => {deleteTask(task.id)}}/>
               </div>
             </div>
