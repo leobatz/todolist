@@ -77,7 +77,7 @@ function ToDoList() {
   return (
     <div className='flex items-center justify-center bg-amber-100 h-screen'>
       <div className='w-xl h-screen flex flex-col gap-[20px]'>
-        <div className='flex flex-col items-center box-border w-full gap-[20px] mt-[20px]'> 
+        <div className='flex flex-col items-center box-border w-full gap-[20px] mt-[50px]'> 
           <h1 className='font-normal text-[50px] font-bitcount'>Lista de Tarefas</h1>
           <form onSubmit={createTask} className='flex gap-[10px] w-full'>
             <input 
