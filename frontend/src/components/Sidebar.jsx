@@ -2,6 +2,7 @@ import { ChevronFirst } from "lucide-react";
 
 export default function Sidebar({ children }) {
     const sections = [
+        'Dashboard',
         'Lista de Tarefas',
         'Agenda',
         'Calculadora',
@@ -10,28 +11,22 @@ export default function Sidebar({ children }) {
     
     return (
         <aside className="h-screen relative z-10 w-[250px] bg-amber-100 shadow-2xl">
-            <nav className="h-full flex flex-col items-center gap-[20px]">
+            <nav className="h-full flex flex-col items-center justify-between gap-[20px]">
                 <div className="p-4 pb-2 flex justify-between items-center">
-                    <img src="../public/lifehub-logo.png" alt="Logo LifeHub" />
+                    <img src="/lifehub-logo.png" alt="Logo LifeHub" />
                 </div>
 
-                <ul>
-                    <li>
-                        <a href="">Lista de Tarefas</a>
-                    </li>
-                    <li>
-                        <a href="">Agenda</a>
-                    </li>
-                    <li>
-                        <a href="">Calculadora</a>
-                    </li>
-                    <li>
-                        <a href="">Financeiro</a>
-                    </li>
-                    <li>
-                        <a href=""></a>
-                    </li>
+                <ul className="flex flex-col gap-[10px]">
+                    {sections.map((section) => (
+                        <li className="flex w-[200px]" key={section}>
+                            <a className="flex justify-center items-center border h-[35px] w-full font-poppins hover:scale-102 hover:-rotate-2 transition-transform duration-200" href="">{section}</a>
+                        </li>
+                    ))}
                 </ul>
+
+                <div>
+
+                </div>
             </nav>
         </aside>
     )
