@@ -11,7 +11,7 @@ export default function Sidebar({ children }) {
     
     return (
         <aside className="h-screen relative z-10 w-[250px] bg-amber-100 shadow-2xl">
-            <nav className="h-full flex flex-col items-center justify-between gap-[20px]">
+            <nav className="h-full flex flex-col items-center gap-[20px]">
                 <div className="p-4 pb-2 flex justify-between items-center">
                     <img src="/lifehub-logo.png" alt="Logo LifeHub" />
                 </div>
@@ -23,10 +23,6 @@ export default function Sidebar({ children }) {
                         </li>
                     ))}
                 </ul>
-
-                <div>
-
-                </div>
             </nav>
         </aside>
     )
