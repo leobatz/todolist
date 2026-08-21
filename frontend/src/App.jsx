@@ -1,6 +1,7 @@
 import './App.css'
 import { useEffect, useState, useRef } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router"
+import Layout from './layouts/Layout'
 import Tasks from './pages/Tasks'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -17,10 +18,8 @@ function App() {
         {/* Páginas com a Sidebar */}
         <Route element={<Layout />}>
 
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Tasks />} />
           <Route path="/tarefas" element={<Tasks />} />
-          <Route path="/agenda" element={<Agenda />} />
-          <Route path="/financeiro" element={<Finance />} />
 
         </Route>
 
