@@ -1,6 +1,5 @@
-import { ChevronFirst } from "lucide-react";
 
-export default function Sidebar({ children }) {
+function Sidebar() {
     const sections = [
         'Dashboard',
         'Lista de Tarefas',
@@ -27,3 +26,5 @@ export default function Sidebar({ children }) {
         </aside>
     )
 }
+
+export default Sidebar
