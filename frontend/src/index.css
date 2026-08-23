@@ -16,3 +16,17 @@
 .font-google {
   font-family: "Google Sans Flex", sans-serif;
 }
+
+.snake {
+    stroke-dasharray: 120 2000;
+    animation: snakeMove 5s linear infinite;
+}
+
+@keyframes snakeMove {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: -2000;
+    }
+}
