@@ -1,23 +1,28 @@
 import { DataTypes } from 'sequelize'
 import database from '../config/db.js'
-import Usuario from './Usuario.js'
 
-const Task = database.define('Task', {
+const Usuario = database.define('Usuario', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    description: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    completed: {
-        type: DataTypes.BOOLEAN,
-        default: false
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
     },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+
+    }
 })
 
-export default Task
+export default Usuario
 
