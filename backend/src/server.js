@@ -11,6 +11,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/tarefas', tasksRoutes)
+app.use('/login', loginRoutes)
 
 async function startServer() { //Função para iniciar o server
     try {
