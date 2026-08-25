@@ -1,5 +1,4 @@
-import database from '../config/db.js'
-import Task from '../models/Task.js'
+import { Task } from '../models/Index.js'
 
 export const listarTarefas = async (req, res) => {
     try {
