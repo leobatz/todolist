@@ -4,10 +4,10 @@ export const listarTarefas = async (req, res) => {
     try {
         const tarefas = await Task.findAll()
 
-        res.status(200).json(tarefas)
+        return res.status(200).json(tarefas)
     } catch (error) {
         console.error('Erro ao listar tarefas: ', error)
-        res.status(500).json( {error: 'Erro interno do servidor'})
+        return res.status(500).json( {error: 'Erro interno do servidor'})
     }
 }
 
