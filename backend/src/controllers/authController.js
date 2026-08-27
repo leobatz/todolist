@@ -48,7 +48,7 @@ export async function login(req, res) {
             return res.status(400).json({ message: "Email e senha são obrigatórios" })
         }
 
-        const user = await Usuario.findOne({ where: {email} })
+        const user = await Usuario.findOne({ where: { email } })
 
         if (!user) {
             return res.status(401).json({ message: "Email ou senha inválidos" })
