@@ -20,7 +20,6 @@ const Usuario = database.define('Usuario', {
     password: {
         type: DataTypes.STRING,
         allowNull: false,
-
     }
 })
 
