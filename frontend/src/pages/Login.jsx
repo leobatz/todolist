@@ -1,20 +1,22 @@
 function Login() {
+    const []
+
     function AnimatedBackground() {
-    return (
-        <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 1000 600"
-            preserveAspectRatio="none"
-        >
-            <path
-                className="snake"
-                d="M-100 200 C 100 50, 50 600, 500 300 S750 50, 1100 300"
-                fill="none"
-                stroke="black"
-                strokeWidth="4"
-                strokeLinecap="round"
-            />
-        </svg>
+        return (
+            <svg
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                viewBox="0 0 1000 600"
+                preserveAspectRatio="none"
+            >
+                <path
+                    className="snake"
+                    d="M-100 200 C 100 50, 50 600, 500 300 S750 50, 1100 300"
+                    fill="none"
+                    stroke="black"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                />
+            </svg>
         )
     }
 
@@ -36,7 +38,7 @@ function Login() {
                     <h2 className="font-google text-gray-400">Sign up</h2>
                 </div>
                 <div className="flex flex-col gap-[15px]">
-                    <input className="h-[40px] bg-white rounded-[10px] pl-[15px] outline-none" type="text" placeholder="Username"/>
+                    <input className="h-[40px] bg-white rounded-[10px] pl-[15px] outline-none" type="text" placeholder="Email"/>
                     <input className="h-[40px] bg-white rounded-[10px] pl-[15px] outline-none" type="text" placeholder="Password"/>
                     <a href="#" className="self-start font-google text-[15px] text-gray-400 underline">Esqueceu a senha?</a>
                 </div>
