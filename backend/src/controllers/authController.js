@@ -64,8 +64,6 @@ export async function login(req, res) {
 
         res.status(200).json({ message: "Login realizado com sucesso.", token });
 
-        res.redirect("http://localhost:3000/tarefas");
-
     } catch (error) {
         console.error('Erro ao fazer login: ', error)
         return res.status(500).json( { message: 'Erro interno do servidor', error })
