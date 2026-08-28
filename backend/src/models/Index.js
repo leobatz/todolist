@@ -1,5 +1,5 @@
-import Task from "./Task";
-import Usuario from "./Usuario";
+import Task from './Task.js'
+import Usuario from "./Usuario.js"
 
 //Relacionamento Usuario -> Task | Usuario 1:N Task
 Usuario.hasMany(Task, { // Um Usuario pertence e possui muitas Tasks (1:N)
