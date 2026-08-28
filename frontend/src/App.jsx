@@ -1,5 +1,4 @@
 import './App.css'
-import { useEffect, useState, useRef } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router"
 import Layout from './layouts/Layout'
 import Tasks from './pages/Tasks'
@@ -13,7 +12,7 @@ function App() {
       <Routes>
 
         {/* Rota da página de Login */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<Login />} />
 
         {/* Páginas com a Sidebar */}
         <Route element={<Layout />}>
