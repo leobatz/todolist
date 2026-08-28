@@ -1,8 +1,9 @@
 import express from 'express'
 import database from './config/db.js'
-import tasksRoutes from './routes/tasksRoutes.js'
 import cors from 'cors'
 import verifyToken from './middleware/verifyToken.js'
+import tasksRoutes from './routes/tasksRoutes.js'
+import loginRoutes from './routes/loginRoutes.js'
 
 const app = express()
 const PORT = 3000
@@ -12,7 +13,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/tarefas', verifyToken, tasksRoutes)
-app.use('/login', loginRoutes)
+app.use('/auth', loginRoutes)
 
 async function startServer() { //Função para iniciar o server
     try {
