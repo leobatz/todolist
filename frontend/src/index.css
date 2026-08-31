@@ -30,3 +30,14 @@
       stroke-dashoffset: -2000;
     }
 }
+
+.alert {
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.alert.show {
+  transform: translateX(0);
+  opacity: 1;
+}
