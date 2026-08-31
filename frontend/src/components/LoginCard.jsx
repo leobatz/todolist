@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import SuccessAlert from "./Alerts/SuccessAlert";
+import ErrorAlert from "./Alerts/ErrorAlert";
 import api from "../services/api"
+import WarningAlert from "./Alerts/WarningAlert";
 
 function LoginCard({ setIsRegister }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [visivel, setVisivel] = useState(false)
     const [mensagemAlert, setMensagemAlert] = useState("")
-    const [mensagemAlertTipo, setMensagemAlertTipo] = useState("")
     const [alertType, setAlertType] = useState("")
 
     const navigate = useNavigate()
@@ -20,13 +23,18 @@ function LoginCard({ setIsRegister }) {
 
             setMensagemAlert(response.data.message)
             setAlertType("success")
+            setVisivel(true)
         } catch (error) {
             console.log(error)
             
             if (error.response.status === 400 || error.response.status === 401) {
+                setMensagemAlert(error.response.data.message)
                 setAlertType("credencials")
+                setVisivel(true)
             } else if (error.response.status === 500) {
+                setMensagemAlert(error.response.data.message)
                 setAlertType("server")
+                setVisivel(true)
             }
 
         }
@@ -64,6 +72,9 @@ function LoginCard({ setIsRegister }) {
                     <a onClick={() => setIsRegister(true)} className="font-google text-[15px] text-blue-400 hover:text-blue-700 transition underline cursor-pointer">Registre-se</a>
                 </div>
             </div>
+            {alertType === 'success' && (<SuccessAlert message={mensagemAlert} animacao={`alert ${visivel ? 'show' : ''}`}/>)}
+            {alertType === 'credencials' && (<ErrorAlert message={mensagemAlert} animacao={`alert ${visivel ? 'show' : ''}`}/>)}
+            {alertType === 'server' && (<WarningAlert message={mensagemAlert} animacao={`alert ${visivel ? 'show' : ''}`}/>)}
         </div>
     )
 }
