@@ -1,3 +1,4 @@
+import UserCard from "./UserCard";
 
 function Sidebar() {
     const sections = [
@@ -22,6 +23,10 @@ function Sidebar() {
                         </li>
                     ))}
                 </ul>
+
+                <div className="mt-auto w-[200px]">
+                    <UserCard />
+                </div>
             </nav>
         </aside>
     )
