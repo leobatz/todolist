@@ -13,7 +13,7 @@ export async function registrar(req, res) {
             return res.status(400).json({ message: "Nome, email e senha são obrigatórios!" })
         }
 
-        const usuarioExistente = await Usuario.findOne(email)
+        const usuarioExistente = await Usuario.findOne({ where: { email } })
 
         if (usuarioExistente) {
             return res.status(409).json({ message: "Usuário já existe." })
