@@ -14,27 +14,46 @@ function LoginCard({ setIsRegister }) {
 
     const navigate = useNavigate()
 
+    function esperar(ms) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve()
+            }, ms)
+        })
+    }
+
     async function handleSubmit() {
         try {
             const response = await api.post("/auth/login", { email: email, password: password})
             setEmail("")
             setPassword("")
-            navigate("/tarefas")
 
             setMensagemAlert(response.data.message)
             setAlertType("success")
-            setVisivel(true)
+            
+            setTimeout(() => {
+                setVisivel(true)
+            }, 200)
+
+            esperar(2000)
+
+            navigate("/tarefas")
         } catch (error) {
             console.log(error)
             
             if (error.response.status === 400 || error.response.status === 401) {
                 setMensagemAlert(error.response.data.message)
                 setAlertType("credencials")
-                setVisivel(true)
+                setTimeout(() => {
+                    setVisivel(true)
+                }, 200)
             } else if (error.response.status === 500) {
                 setMensagemAlert(error.response.data.message)
                 setAlertType("server")
-                setVisivel(true)
+
+                setTimeout(() => {
+                    setVisivel(true)
+                }, 500)
             }
 
         }
