@@ -32,7 +32,7 @@
 }
 
 .alert {
-  transform: translateX(120%);
+  transform: translateY(120%);
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
