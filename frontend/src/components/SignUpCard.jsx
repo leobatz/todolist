@@ -12,7 +12,9 @@ function SignUpCard({ setIsRegister }) {
 
     async function handleRegister() {
         try {
-            await api.post("/auth/register", { name: name, email: email, password: password})
+            const response = await api.post("/auth/register", { nome: name, email: email, senha: password })
+            console.log(response)
+
             setName("")
             setEmail("")
             setPassword("")
