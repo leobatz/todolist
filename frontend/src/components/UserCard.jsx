@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { User, Settings, LogOut } from 'lucide-react';
 
 function UserCard() {
     const [abrirMenu, setAbrirMenu] = useState(false)
+
+    const userCardRef = useRef(null)
 
     const userOptions = [
         {
@@ -31,7 +33,7 @@ function UserCard() {
             </button>
 
             {abrirMenu && (
-                <div className="absolute mb-2 w-full bottom-full bg-amber-100 rounded-lg drop-shadow-xl">
+                <div ref={userCardRef} className="absolute mb-2 w-full bottom-full bg-amber-100 rounded-lg drop-shadow-xl">
                     {userOptions.map((option) => {
                         const Icon = option.icon
 
