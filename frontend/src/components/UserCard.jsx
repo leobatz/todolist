@@ -21,6 +21,20 @@ function UserCard() {
         }
     ]
 
+    useEffect(() => {
+        function fecharMenu(event) {
+            if (userCardRef.current && !userCardRef.current.contains(event.target)) { //O lugar que o usuario clicou está dentro do useRef?
+                setAbrirMenu(false)
+            }
+        }
+
+        document.addEventListener("mousedown", fecharMenu)
+
+        return () => {
+            document.removeEventListener("mousedown", fecharMenu) //Limpeza do efeito ao destruir componente
+        }
+    })
+
     return (
         <div className="relative">
             <button onClick={() => setAbrirMenu(!abrirMenu)} className="w-full h-[50px] mb-[10px] flex items-center gap-3 hover:bg-[#dbd1a9] p-[5px] rounded-[10px] transition cursor-pointer">
