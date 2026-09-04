@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import api from '../services/api'
+import api from '../services/Api'
 import { SquarePen, Trash2 } from 'lucide-react';
 
 function ToDoList() {
