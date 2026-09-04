@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import SuccessAlert from "./Alerts/SuccessAlert";
 import ErrorAlert from "./Alerts/ErrorAlert";
-import api from "../services/api"
+import api from "../services/Api"
 import WarningAlert from "./Alerts/WarningAlert";
 
 function LoginCard({ setIsRegister }) {
