@@ -20,13 +20,13 @@ function ToDoList() {
   }
 
   async function getTasks() {
-      try {
-        const response = await api.get('/tarefas')
-        setTasks(response.data)
-      } catch (error) {
-        console.error(error)
-      }
+    try {
+      const response = await api.get('/tarefas')
+      setTasks(response.data)
+    } catch (error) {
+      console.error(error)
     }
+  }
 
   useEffect(() => {
     getTasks()
@@ -76,7 +76,7 @@ function ToDoList() {
 
   return (
     <div className='flex items-center justify-center bg-amber-100 h-screen'>
-      <div className='w-xl h-screen flex flex-col gap-[20px]'>
+      <div className='w-xl h-full flex flex-col gap-[20px]'>
         <div className='flex flex-col items-center box-border w-full gap-[20px] mt-[50px]'> 
           <h1 className='font-normal text-[50px] font-bitcount'>Lista de Tarefas</h1>
           <form onSubmit={createTask} className='flex gap-[10px] w-full'>
@@ -89,7 +89,7 @@ function ToDoList() {
             <button type='submit' className='bg-blue-400 active:scale-95 hover:bg-[#4d8bb8] transition-colors text-white font-[poppins] p-[6px] rounded-sm cursor-pointer'>Adicionar</button>
           </form> 
         </div>
-        <div>
+        <div className='flex-1 overflow-y-auto pr-3'>
           {tasks.map(task => (
             <div className='bg-transparent cursor-pointer mb-[3px] hover:bg-[#ccbd8f] transition-colors flex justify-between items-center box-border w-full border rounded-sm h-[4rem] p-[15px]' key={task.id}>
               {
