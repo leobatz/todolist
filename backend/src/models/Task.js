@@ -16,6 +16,10 @@ const Task = database.define('Task', {
         type: DataTypes.BOOLEAN,
         default: false
     },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 })
 
 export default Task
