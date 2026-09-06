@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
-import api from "../services/api"
+import api from "../services/Api"
 import LoginCard from "../components/LoginCard";
 import SignUpCard from "../components/SignUpCard";
 
