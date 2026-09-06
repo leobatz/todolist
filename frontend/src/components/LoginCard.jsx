@@ -25,6 +25,9 @@ function LoginCard({ setIsRegister }) {
     async function handleSubmit() {
         try {
             const response = await api.post("/auth/login", { email: email, password: password})
+
+            localStorage.setItem("token", response.data.token)
+
             setEmail("")
             setPassword("")
 
