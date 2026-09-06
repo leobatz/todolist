@@ -41,3 +41,24 @@
   transform: translateX(0);
   opacity: 1;
 }
+
+/* largura da scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* fundo */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* parte que você arrasta */
+::-webkit-scrollbar-thumb {
+  background: #c5b98d;
+  border-radius: 10px;
+}
+
+/* quando passa o mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: #a99b6c;
+}
