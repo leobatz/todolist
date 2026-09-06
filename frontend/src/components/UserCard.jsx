@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react"
-import { User, Settings, LogOut } from 'lucide-react';
+import { User, Settings, LogOut } from 'lucide-react'
+import api from '../services/Api'
 
 function UserCard() {
     const [abrirMenu, setAbrirMenu] = useState(false)
+    const [userNome, setUserNome] = useState("")
 
     const userCardRef = useRef(null)
 
@@ -20,6 +22,19 @@ function UserCard() {
             icon: LogOut
         }
     ]
+
+    async function getCurrentUser() {
+        try {
+            const response = await api.get('/me')
+            setUserNome(response.data.username)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        getCurrentUser()
+    }, [])
 
     useEffect(() => {
         function fecharMenu(event) {
@@ -39,10 +54,10 @@ function UserCard() {
         <div className="relative">
             <button onClick={() => setAbrirMenu(!abrirMenu)} className="w-full h-[50px] mb-[10px] flex items-center gap-3 hover:bg-[#dbd1a9] p-[5px] rounded-[10px] transition cursor-pointer">
                 <div className="bg-amber-600 flex items-center h-[40px] w-[40px] justify-center rounded-full p-[5px]">
-                    <p>OB</p>
+                    <p>{userNome.toUpperCase().slice(0, 2)}</p>
                 </div>
                 <div>
-                    <h1>oceanbatz</h1>
+                    <h1>{userNome}</h1>
                 </div>
             </button>
 
