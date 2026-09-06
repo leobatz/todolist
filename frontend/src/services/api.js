@@ -21,8 +21,12 @@ api.interceptors.response.use(
 
     error => {
         if (error.response?.status === 401) {
-            localStorage.removeItem("token")
-            window.location;href = "/auth"
+            const url = error.config?.url
+
+            if (!url.includes("/auth/login")) {
+                localStorage.removeItem("token")
+                window.location.href = "/auth"
+            }
         }
 
         return Promise.reject(error)
