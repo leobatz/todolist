@@ -38,7 +38,7 @@ function LoginCard({ setIsRegister }) {
                 setVisivel(true)
             }, 200)
 
-            esperar(2000)
+            await esperar(2000)
 
             navigate("/tarefas")
         } catch (error) {
