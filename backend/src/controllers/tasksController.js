@@ -2,7 +2,9 @@ import { Task } from '../models/Index.js'
 
 export const listarTarefas = async (req, res) => {
     try {
-        const tarefas = await Task.findAll()
+        const userId = req.userId
+
+        const tarefas = await Task.findAll({ where: { userId } })
 
         return res.status(200).json(tarefas)
     } catch (error) {
@@ -13,9 +15,10 @@ export const listarTarefas = async (req, res) => {
 
 export const criarTarefa = async (req, res) => {
     try {
+        const userId = req.userId
         const { description } = req.body
 
-        const novaTarefa = await Task.create({ description })
+        const novaTarefa = await Task.create({ description, userId })
 
         return res.status(201).json({ message: 'Tarefa criada com sucesso' })
     } catch (error) {
@@ -26,10 +29,11 @@ export const criarTarefa = async (req, res) => {
 
 export const atualizarTarefa = async (req, res) => {
     try {
+        const userId = req.userId
         const { id } = req.params
         const { description } = req.body
 
-        const atualizandoTarefa = await Task.findByPk(id)
+        const atualizandoTarefa = await Task.findOne({ where: { id, userId } })
 
         if (!atualizandoTarefa) {
             return res.status(404).json({ error: 'Tarefa não encontrada' })
@@ -47,9 +51,10 @@ export const atualizarTarefa = async (req, res) => {
 
 export const deletarTarefa = async (req, res) => {
     try {
+        const userId = req.userId
         const { id } = req.params
 
-        const deletandoTarefa = await Task.findByPk(id)
+        const deletandoTarefa = await Task.findOne({ where: { id, userId } })
 
         if (!deletandoTarefa) {
             return res.status(404).json({ error: 'Tarefa não encontrada' })
