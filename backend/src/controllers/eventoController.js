@@ -1,4 +1,4 @@
-import { Evento } from '../models/Index.js'
+import { Evento, CategoriaEvento } from '../models/Index.js'
 
 export const listarEventos = async (req, res) => {
     try {
@@ -17,6 +17,12 @@ export const criarEvento = async (req, res) => {
     try {
         const userId = req.userId
         const { titulo, data, hora, categoriaEventoId } = req.body
+
+        const categoriaEvento =  await CategoriaEvento.findOne({ where: { userId, categoriaEventoId } })
+
+        if (!categoriaEvento) {
+            return res.status(404).json({ message: 'Categoria não encontrada.' })
+        }
 
         const novoEvento = await Task.create({ titulo, data, hora, categoriaEventoId, userId })
 
