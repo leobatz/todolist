@@ -40,7 +40,7 @@ function LoginCard({ setIsRegister }) {
 
             await esperar(2000)
 
-            navigate("/tarefas")
+            navigate("/listadetarefas")
         } catch (error) {
             console.log(error)
             
