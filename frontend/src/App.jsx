@@ -4,6 +4,7 @@ import Layout from './layouts/Layout'
 import Tasks from './pages/Tasks'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Agenda from './pages/Agenda'
 
 function App() {
   
@@ -18,7 +19,8 @@ function App() {
         <Route element={<Layout />}>
 
           <Route path="/" element={<Tasks />} />
-          <Route path="/tarefas" element={<Tasks />} />
+          <Route path="/listadetarefas" element={<Tasks />} />
+          <Route path="/agenda" element={<Agenda />} />
 
         </Route>
 
