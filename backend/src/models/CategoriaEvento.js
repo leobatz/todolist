@@ -15,6 +15,10 @@ const CategoriaEvento = database.define('CategoriaEvento', {
     cor: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 })
 
