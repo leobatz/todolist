@@ -6,9 +6,9 @@ export const listarCategorias = async (req, res) => {
 
         const categorias = await CategoriaEvento.findAll({ where: { userId } })
 
-        return res.status(200).json(eventos)
+        return res.status(200).json(categorias)
     } catch (error) {
-        console.error('Erro ao listar eventos: ', error)
+        console.error('Erro ao listar categorias: ', error)
         return res.status(500).json( {error: 'Erro interno do servidor'})
     }
 }
@@ -16,13 +16,13 @@ export const listarCategorias = async (req, res) => {
 export const criarCategoria = async (req, res) => {
     try {
         const userId = req.userId
-        const { titulo, data, hora, categoriaEventoId } = req.body
+        const { nome, cor } = req.body
 
-        const novoEvento = await Task.create({ titulo, data, hora, categoriaEventoId, userId })
+        const novaCategoria = await CategoriaEvento.create({ nome, cor, userId })
 
-        return res.status(201).json({ message: 'Evento criado com sucesso', novoEvento })
+        return res.status(201).json({ message: 'Categoria criada com sucesso', novaCategoria })
     } catch (error) {
-        console.error('Erro ao criar evento: ', error)
+        console.error('Erro ao criar categoria: ', error)
         return res.status(500).json( {error: 'Erro interno do servidor'})
     }
 }
@@ -31,24 +31,22 @@ export const atualizarCategoria = async (req, res) => {
     try {
         const userId = req.userId
         const { id } = req.params
-        const { titulo, data, hora, categoriaEventoId } = req.body
+        const { nome, cor } = req.body
 
-        const atualizandoEvento = await Evento.findOne({ where: { id, userId } })
+        const atualizandoCategoria = await CategoriaEvento.findOne({ where: { id, userId } })
 
-        if (!atualizandoEvento) {
-            return res.status(404).json({ error: 'Evento não encontrado' })
+        if (!atualizandoCategoria) {
+            return res.status(404).json({ error: 'Categoria não encontrada.' })
         }
 
-        atualizandoEvento.titulo = titulo
-        atualizandoEvento.data = data
-        atualizandoEvento.hora = hora
-        atualizandoEvento.categoriaEventoId = categoriaEventoId
+        atualizandoCategoria.nome = nome
+        atualizandoCategoria.cor = cor
 
-        await atualizandoEvento.save()
+        await atualizandoCategoria.save()
 
-        return res.status(200).json({ message: 'Evento atualizado com sucesso' })
+        return res.status(200).json({ message: 'Categoria atualizada com sucesso' })
     } catch (error) {
-        console.error('Erro ao atualizar evento: ', error)
+        console.error('Erro ao atualizar categoria: ', error)
         return res.status(500).json( {error: 'Erro interno do servidor'})
     }
 }
@@ -58,17 +56,17 @@ export const deletarCategoria = async (req, res) => {
         const userId = req.userId
         const { id } = req.params
 
-        const deletandoEvento = await Task.findOne({ where: { id, userId } })
+        const deletandoCategoria = await CategoriaEvento.findOne({ where: { id, userId } })
 
-        if (!deletandoEvento) {
-            return res.status(404).json({ error: 'Evento não encontrado' })
+        if (!deletandoCategoria) {
+            return res.status(404).json({ error: 'Categoria não encontrada' })
         }
 
-        await deletandoEvento.destroy()
+        await deletandoCategoria.destroy()
 
-        return res.status(200).json({ message: 'Evento deletado com sucesso' })
+        return res.status(200).json({ message: 'Categoria deletada com sucesso' })
     } catch (error) {
-        console.error('Erro ao deletar evento: ', error)
+        console.error('Erro ao deletar categoria: ', error)
         return res.status(500).json( {error: 'Erro interno do servidor'})
     }
 }
