@@ -1,10 +1,16 @@
 import express from 'express'
 import database from './config/db.js'
 import cors from 'cors'
+
+//Importando middleware
 import verifyToken from './middleware/verifyToken.js'
+
+//Importando rotas
 import tasksRoutes from './routes/tasksRoutes.js'
 import loginRoutes from './routes/loginRoutes.js'
 import currentUserRoutes from './routes/currentUserRoutes.js'
+import categoriaEventoRoutes from './routes/categoriaEventoRoutes.js'
+import eventoRoutes from './routes/eventoRoutes.js'
 
 const app = express()
 const PORT = 3000
@@ -14,6 +20,8 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/tarefas', verifyToken, tasksRoutes)
+app.use('/categoriasEvento', verifyToken,categoriaEventoRoutes)
+app.use('/eventos', verifyToken, eventoRoutes)
 app.use('/me', verifyToken, currentUserRoutes)
 app.use('/auth', loginRoutes)
 
