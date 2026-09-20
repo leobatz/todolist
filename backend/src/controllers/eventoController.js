@@ -18,13 +18,13 @@ export const criarEvento = async (req, res) => {
         const userId = req.userId
         const { titulo, data, hora, categoriaEventoId } = req.body
 
-        const categoriaEvento =  await CategoriaEvento.findOne({ where: { userId, categoriaEventoId } })
+        const categoriaEvento =  await CategoriaEvento.findOne({ where: { userId, id:categoriaEventoId } })
 
         if (!categoriaEvento) {
             return res.status(404).json({ message: 'Categoria não encontrada.' })
         }
 
-        const novoEvento = await Task.create({ titulo, data, hora, categoriaEventoId, userId })
+        const novoEvento = await Evento.create({ titulo, data, hora, categoriaEventoId, userId })
 
         return res.status(201).json({ message: 'Evento criado com sucesso', novoEvento })
     } catch (error) {
@@ -38,6 +38,12 @@ export const atualizarEvento = async (req, res) => {
         const userId = req.userId
         const { id } = req.params
         const { titulo, data, hora, categoriaEventoId } = req.body
+
+        const categoriaEvento =  await CategoriaEvento.findOne({ where: { userId, id:categoriaEventoId } })
+
+        if (!categoriaEvento) {
+            return res.status(404).json({ message: 'Categoria não encontrada.' })
+        }
 
         const atualizandoEvento = await Evento.findOne({ where: { id, userId } })
 
@@ -64,7 +70,7 @@ export const deletarEvento = async (req, res) => {
         const userId = req.userId
         const { id } = req.params
 
-        const deletandoEvento = await Task.findOne({ where: { id, userId } })
+        const deletandoEvento = await Evento.findOne({ where: { id, userId } })
 
         if (!deletandoEvento) {
             return res.status(404).json({ error: 'Evento não encontrado' })
