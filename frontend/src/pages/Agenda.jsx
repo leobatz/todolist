@@ -2,7 +2,9 @@
 
 function Agenda(){
     return (
-        <div></div>
+        <main className="flex items-center justify-center bg-amber-100 h-screen">
+
+        </main>
     )
 }
 
