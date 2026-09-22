@@ -46,20 +46,20 @@ function Agenda(){
     }, [])
 
     return (
-        <div className="h-screen flex flex-col pt-[20px] px-[20px] pb-[20px] justify-center border bg-amber-100">
+        <div className="h-screen flex flex-col pt-[20px] px-[20px] pb-[20px] justify-center bg-amber-100 overflow-hidden">
 
-            <div className="flex justify-center mb-[10px] items-center">
+            <div className="flex justify-center mb-[10px] items-center shrink-0">
                 <h1 className='font-normal text-[50px] font-bitcount'>Agenda</h1>
             </div>
 
-            <div className="h-full w-full flex justify-center gap-5">
+            <div className="flex-1 w-full flex justify-center gap-5 min-h-0">
 
-                <div className="h-full w-[70%] border p-[20px]">
+                <div className="h-full w-[70%] border p-[20px] flex flex-col min-h-0">
                     <Calendar eventos={eventosComCategoria}/>
                 </div>
 
-                <div className="flex flex-col w-[30%] gap-2">
-                    <div className="flex justify-center items-center gap-2">
+                <div className="flex flex-col w-[30%] gap-2 h-full min-h-0">
+                    <div className="flex justify-center items-center gap-2 shrink-0 font-poppins">
                         <button 
                             className="border w-full p-1 cursor-pointer transition-all hover:-translate-y-1 hover:shadow-lg active:translate-y-0 active:shadow-md" 
                             onClick={() => setModalCategoriaAberto(true)}
@@ -73,7 +73,7 @@ function Agenda(){
                             Criar Categoria
                         </button>
                     </div>
-                    <div className="h-full w-full border">
+                    <div className="flex-1 w-full border min-h-0">
                         <EventList eventos={eventosComCategoria}/>
                     </div>
                 </div>
