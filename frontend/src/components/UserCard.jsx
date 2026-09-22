@@ -51,7 +51,7 @@ function UserCard() {
     })
 
     return (
-        <div className="relative">
+        <div className="relative font-poppins">
             <button onClick={() => setAbrirMenu(!abrirMenu)} className="w-full h-[50px] mb-[10px] flex items-center gap-3 hover:bg-[#dbd1a9] p-[5px] rounded-[10px] transition cursor-pointer">
                 <div className="bg-amber-600 flex items-center h-[40px] w-[40px] justify-center rounded-full p-[5px]">
                     <p>{userNome.toUpperCase().slice(0, 2)}</p>
