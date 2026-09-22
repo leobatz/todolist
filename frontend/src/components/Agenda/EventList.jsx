@@ -54,7 +54,7 @@ function EventList({ eventos }) {
     const eventosOrdenados = ordenarEventos(eventos)
 
     return (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center font-poppins p-3">
             <h2>Compromissos</h2>
 
             <div>
